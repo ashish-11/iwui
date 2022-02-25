@@ -211,6 +211,12 @@
     height: 1rem;
     width: 1rem;
     float: right;
+    bottom: 0.3vw;
+  }
+  
+  button:nth-child(n+6) {
+    position: relative;
+    right: 7vw;
   }
 
   .dashboard__header {

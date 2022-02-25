@@ -121,7 +121,7 @@ class DashboardPageContainer extends Component {
   //This method gets invoked on table row click and navigates to tablePage or EmailPage
   onEditDoc(file) {
     console.log(file);
-    if (file.status === "Completed" && file.via === "Email") {
+    if (file.status === "Completed" || file.status === "Processed" && file.via === "Email") {
       this.props.history.push("emailForm/" + file.requestId);
     } else if (file.status === "Completed" || file.status === "Processed") {
       this.props.history.push({
