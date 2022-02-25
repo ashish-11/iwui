@@ -1,0 +1,21 @@
+{
+    "ret_code": 200,
+    "msg": "SUCCESS",
+    "data": {
+        "id": "61b8a5fff056901eba96ccb7",
+        "display_name": "Priyanka Pandey",
+        "portrait": null,
+        "title": null,
+        "phone": null,
+        "company": null,
+        "created_at": "2021-12-14T14:11:11.699+00:00",
+        "updated_at": "2021-12-27T14:37:13.676+00:00",
+        "email": "priyanka.pandey1@ibm.com",
+        "uid": "002Q36744",
+        "given_name": null,
+        "family_name": null,
+        "country": null,
+        "role": "user",
+        "delete_marker": null
+    }
+}

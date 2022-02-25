@@ -1,0 +1,226 @@
+/*!
+ * IBM Services Content Intelligence Toolkit - Document Digitization (6949-08M)
+ * (C) Copyright IBM Corp. 2021, 2022  All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+  .dashboard__illo {
+    max-width: 100%;
+  }
+  .dashboard__banner {
+    padding-top: $spacing-07;
+    padding-bottom: $spacing-07;
+  }
+
+  .dashboard__heading {
+    @include carbon--type-style('productive-heading-06');
+  }
+
+  .dashboard_laptopimg {
+    padding-top: $spacing-07 * 3;
+    padding-bottom: $spacing-07 * 2;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .dashboard__content {
+    padding-top: $layout-05;
+    padding-bottom: $layout-05;
+    margin: 0 auto;
+  }
+
+  .dashboard__infobar {
+    background: #FCFCFC;
+    border: 0.5px solid #BDBDBD;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard__infobar_cell {
+    height: 120px;
+    border-right: 1px solid #BDBDBD;
+    padding:24px 48px;
+  }
+
+  .dashboard__infobar_title{
+    @include carbon--type-style('productive-heading-03');
+    @include carbon--font-weight('semibold');
+  }
+
+  .dashboard__infobar_value{
+    @include carbon--type-style('display-04');
+    @include carbon--font-weight('semibold');
+  }
+
+  .dashboard__infobar_subcell{
+    margin-top: $spacing-03;
+    height: 40px;
+    border-right: 1px solid #BDBDBD;
+  }
+
+  .dashboard__infobar_subcell2{
+    margin-top: $spacing-03;
+    height: 40px;
+  }
+
+  .dashboard__infobar_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard__infobar_area{
+    display: flex;
+    align-items: center;
+    @include carbon--type-style('expressive-heading-01');
+    padding: 0px;
+  }
+
+  .dashboard__infobar_subvalue{
+    @include carbon--type-style('display-02');
+    @include carbon--font-weight('semibold');
+  }
+
+  .dashboard__tabletool{
+    margin-top: $spacing-07;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    opacity: 0.9;
+    height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dashboard__tabletool_info{
+    @include carbon--type-style('expressive-heading-03');
+    @include carbon--font-weight('semibold');
+  }
+
+  .dashboard__tabletool_icon:hover{
+    cursor: pointer;
+  }
+  
+  .dashboard__buttonarea {
+    margin: 0px;
+    padding:0px;
+  }
+  .dashboard__button {
+    height: 48px;
+    width: 178px;
+    display: flex;
+    float: right;
+  }
+
+  .dashboard__tableheader{
+    height: 56px;
+    background: #3D3D3D 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include carbon--type-style('body-long-01');
+    color: #ffffff;
+  }
+
+  .dashboard__tableheader_icon > svg {
+    fill: #ffffff; 
+  }
+
+  .dashboard__tableheader_icon:hover{
+    cursor: pointer;
+  }
+
+
+  .dashboard__option_row{
+    align-items: center;
+  }
+
+  .dashboard__option_row_column{
+    align-items: left;
+    flex-direction: column;
+  }
+
+
+  // .dashboard__tableheader_icon .bx--overflow-menu__icon {
+  //   fill: #ffffff; 
+  // }
+  // .dashboard__tableheader_icon .bx--overflow-menu-options {
+  //   background-color: #ffffff; 
+  // }
+  // .dashboard__tableheader_icon .bx--overflow-menu:hover {
+  //   background-color: #3D3D3D;
+  //   border: #3D3D3D;
+  // }
+  // .dashboard__tableheader_icon .bx--overflow-menu:focus {
+  //   background-color: #3D3D3D;
+  //   border: #3D3D3D;
+  //   outline:none;
+  // }
+  // .bx--overflow-menu-options__btn {
+  //   background-color: #ffffff;
+  //   // width: 145px;
+  //   max-width: none;
+  //   display: flex;
+  //   align-items: center;
+  // }
+  // .bx--overflow-menu-options__option {
+  //   // width: 145px;
+  //   background-color: #ffffff;
+  // }
+
+  // .dashboard__tableheader_icon .bx--overflow-menu.bx--overflow-menu--open {
+  //   background-color: #3D3D3D;
+  //   border: #3D3D3D;
+  // }
+  
+
+  .dashboard__option{
+    display: flex;
+  }
+
+  .dashboard__option_rectangle{
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+  }
+
+  .dashboard__option_area{
+    @include carbon--type-style('caption-01');
+    padding: 0px 12px;
+    letter-spacing: 0.14px;
+  }
+
+
+  // .dashboard__tableheader_checkbox{
+  //   display: flex;
+  //   margin: 0 auto;
+  // }
+
+  .bx--fieldset {
+    margin: 0 auto;
+  }
+
+  .bx--checkbox{
+    border-color:	#ffffff;
+    background-color:	#ffffff;
+  }
+  .bx--checkbox:unchecked{
+    border-color:	#ffffff;
+    background-color:	#ffffff;
+  }
+  .bx--checkbox:checked{
+    border-color:	#ffffff;
+    background-color:	#ffffff;
+  }
+
+  .dashboard__tablecontent{
+    height: 55px;
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include carbon--type-style('body-long-01');
+    border-bottom: 2px solid #BDBDBD;
+  }
+
+

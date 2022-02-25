@@ -1,0 +1,81 @@
+/*!
+ * IBM Services Content Intelligence Toolkit - Document Digitization (6949-08M)
+ * (C) Copyright IBM Corp. 2021, 2022  All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+.bottombar {
+  // margin: 40px 0px 0px 0px;
+  position: absolute;
+  z-index: 1;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #525252 ;
+  .button-icon-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+  }
+  .button-icon{
+    padding:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #ffffff;
+      .a{fill:#fff;}
+    }
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost:hover .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #000000;
+      .a{fill:#000;}
+    }
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost:disabled .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #c6c6c6;
+      .a{fill:#c6c6c6;}
+    }
+
+  }
+
+  .button-icon-pin{
+    padding:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F62FE;
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #ffffff;
+      .a{fill:#fff;}
+    }
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost:hover .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #000000;
+      .a{fill:#000;}
+    }
+    .bx--btn.bx--btn--icon-only.bx--btn--ghost:disabled .bx--btn__icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      fill: #c6c6c6;
+      .a{fill:#c6c6c6;}
+    }
+
+  }
+}
+

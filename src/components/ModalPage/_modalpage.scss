@@ -1,0 +1,20 @@
+/*!
+ * IBM Services Content Intelligence Toolkit - Document Digitization (6949-08M)
+ * (C) Copyright IBM Corp. 2021, 2022  All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+  .notification {
+    width: 704px;
+    margin: 0 auto;
+    z-index: 1000;
+    top: 90%;
+    position: absolute;
+    left: 50%;
+    margin-left: -335px;
+    // margin-top: -150px;
+  }
+
+  .bx--toast-notification--low-contrast .bx--toast-notification__close-button {
+    outline:none;
+  }
