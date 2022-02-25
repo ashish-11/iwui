@@ -145,9 +145,10 @@ export default class TableRightContent extends Component {
   _handleTextChange = (item) => (e) => {
     if (item == "review") {
       if (e.target.value == "") {
-        this.setState({ showReviewSubmit: false, review_comment: e.target.value })
+        this.setState({ showReviewSubmit: false,showReviewTradshift: false, review_comment: e.target.value })
+       
       } else {
-        this.setState({ showReviewSubmit: true, review_comment: e.target.value })
+        this.setState({ showReviewSubmit: true,showReviewTradshift: true, review_comment: e.target.value })        
       }
     } else {
       if (e.target.value == "") {
@@ -499,6 +500,7 @@ export default class TableRightContent extends Component {
                         <input type="text" defaultValue={documentMetadata ? documentMetadata.comment : ""} onChange={this._handleTextChange("review")}></input>
                       </TableCell>
                     </TableRow>
+                    {this.state.showReviewTradshift ? <button className="Tradeshift">Send To Tradeshift</button> : <></>}
                     {this.state.showReviewSubmit ? <button className="accrdian-submit-btn" onClick={this._handleSubmit("review")}>Submit</button> : <></>}
                   </TableBody>
                 </Table>

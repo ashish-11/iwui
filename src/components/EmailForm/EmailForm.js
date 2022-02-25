@@ -8,14 +8,13 @@ const EmailForm = (props) => {
     const { emails } = props;
     return (
         <div className="App">
-            {/* <div className="bx--header">
-                <AppHeader />
-            </div> */}
+            <div className="bx--header">
+            <h5 className="EmailHeader" style={{color:'#fff'}}>Details of Email Received</h5>
+            </div>
 
             <div className="container-fluid py-5 mx-auto">
                 <div className="row d-flex justify-content-center">
-                    <div className="col-xl-9 col-lg-10 col-md-11 col-12 text-center">
-                        <h5 className="text-left mb-4">Details of Email Received</h5>
+                    <div className="col-xl-9 col-lg-10 col-md-11 col-12 text-center">                
                         {emails ?
                             <div className="card">
                                 <form className="form-card">
