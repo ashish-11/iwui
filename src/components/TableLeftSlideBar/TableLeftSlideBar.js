@@ -45,6 +45,15 @@ export default class TableLeftSlideBar extends Component {
             rowsPerPage: 5,
             page: event.target.value
         })
+        let { imageList, imagefile } = this.props;
+
+        let page = Number(event.target.value);
+        if(imagefile && page == imagefile.id){
+            console.log('same')
+        } else{
+            this._imageSelect(imageList[page-1]);
+        }
+
     }
 
     _showChange = (event) => {
@@ -127,7 +136,8 @@ export default class TableLeftSlideBar extends Component {
     // }
 
     PageSelect = (value) => {
-        let pages = Math.ceil(value / this.state.rowsPerPage);
+        // let pages = Math.ceil(value / this.state.rowsPerPage);
+        let pages = value;
         return (
             <React.Fragment>
                 <div className="bx--row" >
@@ -140,7 +150,7 @@ export default class TableLeftSlideBar extends Component {
                             onChange={this._pageChange.bind(this)}
                         >
                             {
-                                // this.SelectItem(pages)
+                                this.SelectItem(pages)
 
                             }
                         </Select>

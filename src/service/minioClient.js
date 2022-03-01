@@ -66,9 +66,21 @@ const getPresignedUrl = async (minioClient, bucketName, objectName) => {
     return response;
 }
 
+const downloadObject = (minioClient, bucketName, objectName, downladPath) => {
+    return minioClient.fGetObject(bucketName, objectName, downladPath, function(err){
+        if(err) {
+            console.log(err);
+            return err;
+        }
+        console.log('success');
+        return 'success'
+    });
+}
+
 export {
     initializeMinioClient,
     bucketExists,
     getObject,
-    getPresignedUrl
+    getPresignedUrl,
+    downloadObject
 }

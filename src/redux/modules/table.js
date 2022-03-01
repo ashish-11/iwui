@@ -109,7 +109,7 @@ export const selectRightSideCells = createAction('@@tf/table/selectRightSideCell
       return t;
     }
     const tableStore = getState().table.tableStore;
-    let tableName = TableUtil.findTableNameByCellId(cells[0].tableID, tableStore);
+    let tableName = TableUtil.findTableNameByCellId(cells[0].id, tableStore);
     if (!tableName) {
       return t;
     }
@@ -123,7 +123,7 @@ export const selectRightSideCells = createAction('@@tf/table/selectRightSideCell
       const row = table[i];
       for (let j = 0; j < row.length; j++) {
         const cell = row[j];
-        if (_.includes(ids, cell.tableID)) {
+        if (_.includes(ids, cell.id)) {
           cell.selected = true;
         } else {
           cell.selected = false;
@@ -288,6 +288,7 @@ export const updateSplitCells = createAction('@@tf/table/updateSplitCells');
 export const updateStatus = createAction('@@tf/table/updateStatus');
 export const initImageList = createAction('@@tf/table/initImageList',
   (datas) => (dispatch, getState) => {
+  
     let imageLists = []
     datas.forEach(async (page, index) => {
       // console.log(page)
@@ -549,6 +550,10 @@ export const getDocumentDatas = createAction("@@tf/table/getDocumentDatas",
     dispatch(resetFullScreen())
     dispatch(initTableData())
     dispatch(updateDocumentId(id))
+    dispatch(refreshDocumentMetaData({
+      metadata: null,
+      kvp: null
+    }))
     // dispatch(startLoading());
     return httpClient
       .get(`${Constants.DATA_BASE_URL}/document/getTable/${id}`, {
@@ -667,8 +672,11 @@ export const updateDocumentDatas = createAction(
     dispatch(resetUndoRedo())
     const state = getState();
     let indata = newtableData.id ? newtableData : _.find(state.table.tableStore, { 'id': tId });
+    console.log("dada=====>>>>>",indata);
     let validation_data = newtableData.id ? newtableData : tableConverter.convertTableDataToParam(indata, imageX, imageY, operation);
+   
     let imgdata = _.find(state.table.imageList, { 'selected': true });
+    console.log("=====>>>>>",this);
     return httpClient
       .put(`${Constants.DATA_BASE_URL}/documents/${state.table.documentId}/pages/${imgdata.name}/tables/${indata.name}`, validation_data,
         {
@@ -677,7 +685,7 @@ export const updateDocumentDatas = createAction(
           }
         })
       .then((res) => {
-        console.log(res);
+        console.log("kya karu=======>",res);
         // get page index
         let documentDatas = getState().table.documentDatas
         let pages = documentDatas.pages
@@ -751,6 +759,7 @@ export const updateDocumentDatas = createAction(
 );
 
 export const refreshDocumentData = createAction('@@tf/table/refreshDocumentData');
+export const refreshDocumentMetaData = createAction('@@tf/table/refreshDocumentMetaData');
 
 export const toggleMarkForReview = createAction('@@tf/table/toggleMarkForReview',
   () => (dispatch, getState, httpClient) => {
@@ -1087,12 +1096,15 @@ export const TableReducer = handleActions(
         redoEnabled: false,
         tableEditFlag: false,
       }
+      
     },
+    
     [selectTable]: (state, { payload: Table }) => {
       return {
         ...state,
         selectedTable: Table
       }
+      
     },
     [clearSelectTable]: (state) => {
       return {
@@ -1386,6 +1398,13 @@ export const TableReducer = handleActions(
       return {
         ...state,
         documentDatas: datas
+      };
+    },
+    [refreshDocumentMetaData]: (state, { payload: datas }) => {
+      return {
+        ...state,
+        documentMetadata: datas.metadata,
+        documentKvp: datas.kvp
       };
     },
     [toggleMarkForReview]: (state, { payload: data }) => {

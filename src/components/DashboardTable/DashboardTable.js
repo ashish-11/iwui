@@ -443,7 +443,6 @@ const DashboardTable = (props) => {
           flipped={true}
           className="filter-menu"
           renderIcon={CaretDown16}
-          style={{position:'relative',right:'7vw'}}
         >
           <OverflowMenuItem
             onClick={(event) => filterByStatus("All")}
@@ -504,7 +503,6 @@ const DashboardTable = (props) => {
                   <div
                     className="dashboard__sort_button"
                     onClick={(event) => onNameSortClick()}
-                    
                   >
                     <ArrowUp20 />
                   </div>
@@ -514,7 +512,7 @@ const DashboardTable = (props) => {
                   <div
                     className="dashboard__sort_button"
                     onClick={(event) => onNameSortClick()}
-                    style={{position:'relative',right:'4vw'}}>
+                  >
                     <ArrowsVertical20 />
                   </div>
                 );
@@ -543,7 +541,7 @@ const DashboardTable = (props) => {
                   <div
                     className="dashboard__sort_button"
                     onClick={(event) => onTimeSortClick(target)}
-                    style={{position:'relative',right:'2vw'}}>
+                  >
                     <ArrowUp20 />
                   </div>
                 );
@@ -561,7 +559,7 @@ const DashboardTable = (props) => {
                   <div
                     className="dashboard__sort_button"
                     onClick={(event) => onTimeSortClick(target)}
-                    >
+                  >
                     <ArrowDown20 />
                   </div>
                 );
@@ -774,13 +772,10 @@ const DashboardTable = (props) => {
 
   const renderTableRow = (row, getSelectionProps) => {
     // get the file using id
-    console.log("00000====",row.id)
-    console.log(uploadingFiles)
-    console.log(files)
-    console.log("=====>>",row.id)
+    // console.log(uploadingFiles)
+    // console.log(files)
     let f = _.find([...uploadingFiles, ...files], (o) => {
       return o.id === row.id;
-      console.log("4444---",row.id)
     });
     if (!f) {
       return;

@@ -45,6 +45,7 @@ const steps = [
   'Processed',
   'Completed',
 ];
+let random;
 
 const colors = {
   'CustomerAddress': 'rgb(88, 178, 220)',
@@ -62,6 +63,7 @@ export default class TableRightContent extends Component {
     super(props);
     this.state = {
       showReviewSubmit: false,
+      showReviewTradeSubmit: false,
       showKvpSubmit: false,
       review_comment: "",
       documentKvpData: {},
@@ -70,6 +72,11 @@ export default class TableRightContent extends Component {
     this.reviewRef = React.createRef();
     this.__handleConfidence = this._handleConfidence.bind(this);
     this._handleAccordianEvent = this._handleAccordianEvent.bind(this);
+  }
+
+  componentDidMount(){
+    random = Math.random() * (999 - 1) + 1;
+    console.log(random)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -144,11 +151,11 @@ export default class TableRightContent extends Component {
 
   _handleTextChange = (item) => (e) => {
     if (item == "review") {
+      console.log(e.target.value)
       if (e.target.value == "") {
-        this.setState({ showReviewSubmit: false,showReviewTradshift: false, review_comment: e.target.value })
-       
+        this.setState({ showReviewSubmit: false, showReviewTradeSubmit: false, review_comment: e.target.value })
       } else {
-        this.setState({ showReviewSubmit: true,showReviewTradshift: true, review_comment: e.target.value })        
+        this.setState({ showReviewSubmit: true, showReviewTradeSubmit: true, review_comment: e.target.value })
       }
     } else {
       if (e.target.value == "") {
@@ -230,10 +237,13 @@ export default class TableRightContent extends Component {
   renderSingleTable(tableJson, ikey) {
     // console.log(tableJson)
     // console.log(ikey)
+    let { imageList } = this.props;
+    let imgData = _.find(imageList, { 'selected': true })
     return (
       <RightSideTable
         key={ikey}
         tableName={ikey}
+        pageNumber={imgData ? imgData.id : ""}
         getLayer={this.props.getLayer}
       />
     );
@@ -276,6 +286,13 @@ export default class TableRightContent extends Component {
       this.setState({ current_target: 4 })
     else
       this.setState({ current_target: currentTarget })
+  }
+
+  _checkIfDocumentMetadata = (documentMetadata) => {
+    console.log(documentMetadata.comment)
+    if(documentMetadata.comment == "" || documentMetadata.comment == null)
+      return false
+    return true
   }
 
   renderTables() {
@@ -450,7 +467,7 @@ export default class TableRightContent extends Component {
                         </div>
                       </div>
                       <div className="kvpBody">
-                        <input type="text" className="kvpBodyInput" name={key} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
+                        <input type="text" className="kvpBodyInput" key={`key_${documentKvp[key][key]}`} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
                       </div>
                     </div>
                   );
@@ -472,7 +489,7 @@ export default class TableRightContent extends Component {
                     kind="info"
                     lowContrast
                     iconDescription="describes the close button"
-                    subtitle="Click “New table” in the editor to select a table for extraction"
+                    // subtitle="Click “New table” in the editor to select a table for extraction"
                     title="No tables extracted yet"
                     caption={null}
                     className="rightnotification"
@@ -497,11 +514,16 @@ export default class TableRightContent extends Component {
                         <span>Comment</span>
                       </TableCell>
                       <TableCell className="MetaData_right">
-                        <input type="text" defaultValue={documentMetadata ? documentMetadata.comment : ""} onChange={this._handleTextChange("review")}></input>
+                        <input type="text" key={`review_${random}`} defaultValue={documentMetadata ? documentMetadata.comment : ""} onChange={this._handleTextChange("review")}></input>
                       </TableCell>
                     </TableRow>
-                    {this.state.showReviewTradshift ? <button className="Tradeshift">Send To Tradeshift</button> : <></>}
                     {this.state.showReviewSubmit ? <button className="accrdian-submit-btn" onClick={this._handleSubmit("review")}>Submit</button> : <></>}
+                    {(documentMetadata && this._checkIfDocumentMetadata(documentMetadata))
+                      ?
+                        <button className="accrdian-submit-btn">TradeShift</button>
+                      :
+                        this.state.showReviewTradeSubmit ? <button className="accrdian-submit-btn">TradeShift</button> : <></>
+                    }
                   </TableBody>
                 </Table>
               </TableContainer>

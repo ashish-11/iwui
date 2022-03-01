@@ -21,7 +21,7 @@ export default class RightSideTable extends Component {
   constructor(props) {
     super(props)
     this.tableConverter = new TableConverter()
-    this.cellStyleHeader = { verticalAlign: "middle", textAlign: "center" }
+    this.cellStyleHeader = { verticalAlign: "middle", textAlign: "center", fontWeight: "bold", color: '#000' }
     this.cellStyle = { verticalAlign: "middle" }
   }
 
@@ -35,7 +35,7 @@ export default class RightSideTable extends Component {
     if (count === 1) {
       return <colgroup key={`colgroup_${index}`}><col></col></colgroup>
     } else {
-      return <colgroup key={`colgroup_${index}`} span={count}>
+      return <colgroup key={`colgroup_${index}`} span={count} style={{fontWeight: 'bold'}}>
         {this.generateMultipleCols(count)}
       </colgroup>
     }
@@ -165,11 +165,11 @@ export default class RightSideTable extends Component {
     return <table id= {"table_" + tableName} className="bx--data-table tablepage-table">
     {this.renderTableCols()}
     <thead>
-      {this.renderTableHeaders(_.slice(tableJson, 0, 0))}
+      {this.renderTableHeaders(_.slice(tableJson?.get(tableName), 0, 1))}
     </thead>
     <tbody>
       {/* {this.renderTableBody(_.slice(tableJson, headersCount))} */}
-      {this.renderTableBody(tableJson?.get(tableName))}
+      {this.renderTableBody(_.slice(tableJson?.get(tableName), 1))}
     </tbody>
   </table>
   }
@@ -183,7 +183,7 @@ export default class RightSideTable extends Component {
   }
 
   render() {
-    const { tableJson, tableName } = this.props
+    const { tableJson, tableName, pageNumber } = this.props
     // console.log(this.props)
     // console.log(tableName)
     // const headersCount = this.splitHeaderRows(tableJson)
@@ -201,21 +201,26 @@ export default class RightSideTable extends Component {
       // ></div>
 
       <div className="tablepage-table-with-label">
-        <div className="tablepage-overflow-menu">
-          <span>{tableName}</span>
-          <OverflowMenu
-                    iconClass="tablepage-overflow-icon"
-                    renderIcon={OverflowMenuVertical16}
-                  >
-                    <OverflowMenuItem
-                      onClick={this.downloadHtmlTable.bind(this)}
-                      itemText="Download HTML Table"
-                    />
-                    <OverflowMenuItem
-                      onClick={this.downloadCsv.bind(this)}
-                      itemText="Download CSV Table"
-                    />
-                  </OverflowMenu>
+        <div style={{display: 'flex'}}>
+          <div className="tablepage-overflow-menu" style={{maxWidth: '70px', marginRight: '10px'}}>
+            <span>{pageNumber!="" ? `Page ${pageNumber}` : ''}</span>
+          </div>
+          <div className="tablepage-overflow-menu">
+            <span>Table {tableName}</span>
+            <OverflowMenu
+              iconClass="tablepage-overflow-icon"
+              renderIcon={OverflowMenuVertical16}
+            >
+              <OverflowMenuItem
+                onClick={this.downloadHtmlTable.bind(this)}
+                itemText="Download HTML Table"
+              />
+              <OverflowMenuItem
+                onClick={this.downloadCsv.bind(this)}
+                itemText="Download CSV Table"
+              />
+            </OverflowMenu>
+          </div>
         </div>
         <Tooltip
           placement="top"

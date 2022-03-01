@@ -204,8 +204,10 @@ export default class TableTopBar extends Component {
     }
 
     _splitVerticalCells() {
+        console.log("VerticalCellssplitCell")
         let { selectedCell, tableStore, createConfirmMenu, cleanContentMenu, addSplitCell, changeVSplitMode, addUndoHistory, startTableEdit, startSplit } = this.props;
         // addUndoHistory()
+        console.log("checking",this.props.startSplit)
         if (!selectedCell || selectedCell.length === 0) {
             return;
         }
@@ -278,6 +280,7 @@ export default class TableTopBar extends Component {
     }
 
     _splitHorizontalCells() {
+        console.log("splitHorizontalCells")
         let { selectedCell, tableStore, createConfirmMenu, cleanContentMenu, addSplitCell, changeHSplitMode, addUndoHistory, startTableEdit, startSplit } = this.props;
         if (!selectedCell || selectedCell.length === 0) {
             return;
@@ -574,6 +577,7 @@ export default class TableTopBar extends Component {
     _overlayOperation() {
         const { tableStore, isOverlayShow, cleanOverflowMenu, cleanContentMenu, updateOverlayShow, overlayView } = this.props;
         let layer = this.props.getLayer();
+        console.log("111111",layer)
         layer.find('Transformer').destroy();
         layer.draw();
         if (isOverlayShow) {
