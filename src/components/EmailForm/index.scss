@@ -1,0 +1,141 @@
+.card {
+    padding: 40px 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: none !important;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    
+}
+.text {
+    font-size: 0.700rem;
+    font-weight: 600;
+    line-height: 1.125rem;
+    letter-spacing: .16px;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+    opacity: 1;
+}
+.pr-1, .px-1 {
+    padding-right: .5rem!important;
+}
+.pt-5, .py-5 {
+    padding-top: 3rem!important;
+}
+.pl-3, .px-3 {
+    padding-left: 0.2rem!important;
+}
+.blue-text {
+    color: #00BCD4
+}
+
+.form-control-label {
+    margin-bottom: 0
+}
+
+input,
+textarea,
+button {
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 18px !important;
+    font-weight: 300
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #00BCD4;
+    outline-width: 0;
+    font-weight: 400
+}
+
+.btn-block {
+    text-transform: uppercase;
+    font-size: 15px !important;
+    font-weight: 400;
+    height: 43px;
+    cursor: pointer
+}
+
+.btn-block:hover {
+    color: #fff !important
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+/* .EditButton{
+  text-align: right;
+} */
+
+.glyphicon-pencil{
+  color: black !important;
+}
+/* .glyphicon-pencil{
+    color:black;
+} */
+.input-group-addon, .input-group-btn {
+    /* width: 1%; */
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 41px;
+    margin-top: 5px;
+    margin-left: 372px;
+    margin-top: -46px;
+}
+
+.input-group-addon {
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.glyphicon {
+    margin-top: -3px;
+    margin-left: -5px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* text-align: center; */
+}
+.Editbutton {
+    width: 40px;
+    margin-left: 380px;
+    margin-top: -38px;
+    height: 33px;
+}
+.form-control{
+  font-weight: 500;
+    font-size: 12px !important;
+    color: #000000;
+    font-style: normal;
+}
+.attachment-list{
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.EmailHeader{
+    text-align: center;
+    padding: 11rem;
+}

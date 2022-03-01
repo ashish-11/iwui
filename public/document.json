@@ -1,0 +1,1648 @@
+{
+    "ret_code": 200,
+    "msg": null,
+    "data": {
+        "documents": [
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "76f7eef",
+                        "document": "4d29d4f",
+                        "table": "5685c10",
+                        "ocr": "b9303c5"
+                    }
+                },
+                "document_data": null,
+                "id": "61c4a482aa2b64115d78a6fa",
+                "document_name": "53e9667e6f1a.pdf",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "590 KB",
+                "document_original_name": "10512021092900004592.pdf",
+                "file_type": "PDF",
+                "updated_at": "2021-12-23 16:32:02",
+                "created_at": "2021-12-23 16:32:02",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/53e9667e6f1a.pdf",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-23 16:32:02",
+                                "end_time": "2021-12-23 16:32:08.906249",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-23 16:32:09",
+                                "end_time": "2021-12-23 16:32:40.318594",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-23 16:32:40",
+                                "end_time": "2021-12-23 16:33:15.927148",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-23 16:32:02",
+                        "end_time": "2021-12-23 16:33:16",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1640277122,
+                        "date": "2021-12-23T16:32:02.000+00:00"
+                    },
+                    {
+                        "timestamp": 1640277122,
+                        "date": "2021-12-23T16:32:02.000+00:00"
+                    },
+                    {
+                        "timestamp": 1640277122,
+                        "date": "2021-12-23T16:32:02.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "76f7eef",
+                        "document": "c7e6822",
+                        "table": "5685c10",
+                        "ocr": "b9303c5"
+                    }
+                },
+                "document_data": null,
+                "id": "61c35436b28aca1c4f7eeec7",
+                "document_name": "941905164d13.pdf",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "590 KB",
+                "document_original_name": "10512021092900004592.pdf",
+                "file_type": "PDF",
+                "updated_at": "2021-12-22 16:37:10",
+                "created_at": "2021-12-22 16:37:10",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/941905164d13.pdf",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:11",
+                                "end_time": "2021-12-22 16:37:16.508619",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:16",
+                                "end_time": "2021-12-22 16:37:48.206107",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:48",
+                                "end_time": "2021-12-22 16:38:26.860030",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-22 16:37:10",
+                        "end_time": "2021-12-22 16:38:26",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1640191030,
+                        "date": "2021-12-22T16:37:10.000+00:00"
+                    },
+                    {
+                        "timestamp": 1640191030,
+                        "date": "2021-12-22T16:37:10.000+00:00"
+                    },
+                    {
+                        "timestamp": 1640191030,
+                        "date": "2021-12-22T16:37:10.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "76f7eef",
+                        "document": "c7e6822",
+                        "table": "5685c10",
+                        "ocr": "b9303c5"
+                    }
+                },
+                "document_data": null,
+                "id": "61c35430b28aca1c4f7eeec5",
+                "document_name": "718fd006118c.pdf",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "709 KB",
+                "document_original_name": "10512021092900004579.pdf",
+                "file_type": "PDF",
+                "updated_at": "2021-12-22 16:37:04",
+                "created_at": "2021-12-22 16:37:04",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/718fd006118c.pdf",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:04",
+                                "end_time": "2021-12-22 16:37:08.072253",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:08",
+                                "end_time": "2021-12-22 16:37:39.678632",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-22 16:37:39",
+                                "end_time": "2021-12-22 16:37:56.927121",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-22 16:37:04",
+                        "end_time": "2021-12-22 16:37:56",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1640191024,
+                        "date": "2021-12-22T16:37:04.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "15bc95d",
+                        "document": "0c8e2e5",
+                        "table": "5685c10",
+                        "ocr": "f5fac91"
+                    }
+                },
+                "document_data": null,
+                "id": "61b9ef9ebeafcb39f9be01f1",
+                "document_name": "5984796a4018.pdf",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "590 KB",
+                "document_original_name": "10512021092900004592.pdf",
+                "file_type": "PDF",
+                "updated_at": "2021-12-15 13:37:34",
+                "created_at": "2021-12-15 13:37:34",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/5984796a4018.pdf",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-15 13:37:34",
+                                "end_time": "2021-12-15 13:37:41.029183",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-15 13:37:41",
+                                "end_time": "2021-12-15 13:38:13.238288",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-15 13:38:13",
+                                "end_time": "2021-12-15 13:38:48.020769",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-15 13:37:34",
+                        "end_time": "2021-12-15 13:38:48",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1639575454,
+                        "date": "2021-12-15T13:37:34.000+00:00"
+                    },
+                    {
+                        "timestamp": 1639575454,
+                        "date": "2021-12-15T13:37:34.000+00:00"
+                    },
+                    {
+                        "timestamp": 1639575454,
+                        "date": "2021-12-15T13:37:34.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "15bc95d",
+                        "document": "0c8e2e5",
+                        "table": "5685c10",
+                        "ocr": "f5fac91"
+                    }
+                },
+                "document_data": null,
+                "id": "61b9e223beafcb39f9be01ed",
+                "document_name": "21312bed11ae.pdf",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "709 KB",
+                "document_original_name": "10512021092900004579.pdf",
+                "file_type": "PDF",
+                "updated_at": "2021-12-15 12:40:03",
+                "created_at": "2021-12-15 12:40:03",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/21312bed11ae.pdf",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-15 12:40:03",
+                                "end_time": "2021-12-15 12:40:06.508315",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-15 12:40:06",
+                                "end_time": "2021-12-15 12:40:37.875584",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-15 12:40:37",
+                                "end_time": "2021-12-15 12:40:52.146857",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-15 12:40:03",
+                        "end_time": "2021-12-15 12:40:52",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1639572003,
+                        "date": "2021-12-15T12:40:03.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "15bc95d",
+                        "document": "e5b7831",
+                        "table": "5685c10",
+                        "ocr": "f5fac91"
+                    }
+                },
+                "document_data": null,
+                "id": "61b95e7fb9eb0e0eda3c161a",
+                "document_name": "0b4dc4f9fcad.jpg",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "173 KB",
+                "document_original_name": "Invoice3.jpg",
+                "file_type": "IMAGE File",
+                "updated_at": "2021-12-15 03:18:23",
+                "created_at": "2021-12-15 03:18:23",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/0b4dc4f9fcad.jpg",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:18:23",
+                                "end_time": "2021-12-15 03:18:24.429539",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:18:24",
+                                "end_time": "2021-12-15 03:18:38.992009",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:18:39",
+                                "end_time": "2021-12-15 03:18:48.251672",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-15 03:18:23",
+                        "end_time": "2021-12-15 03:18:48",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1639538303,
+                        "date": "2021-12-15T03:18:23.000+00:00"
+                    }
+                ]
+            },
+            {
+                "category": {
+                    "ui_display": true,
+                    "description": "Example description 1c+gte",
+                    "selected_models": null,
+                    "id": "60404d7ab6740cf1cab1a979",
+                    "name": "1C+GTE",
+                    "config": {
+                        "id": "5f3b9e9fbb5dfcb0651a3d76",
+                        "kvp_definition": {
+                            "reject_keys": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "synonyms": [
+                                "a1",
+                                "b2",
+                                "c3"
+                            ],
+                            "keys": [
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                },
+                                {
+                                    "key": "Invoice Number",
+                                    "type": "string",
+                                    "regex": [
+                                        null,
+                                        null
+                                    ],
+                                    "mapping": [
+                                        "Invoice No",
+                                        "Serial Number"
+                                    ],
+                                    "words": [
+                                        "Invoice",
+                                        "No",
+                                        "Serial"
+                                    ],
+                                    "mandatory": true,
+                                    "virtual": false
+                                }
+                            ]
+                        },
+                        "name": "Invoice",
+                        "pipeline_setting": {
+                            "pre_process": {
+                                "pre_process": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "preprocess",
+                                        "param2": "high"
+                                    }
+                                },
+                                "segmentation": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high"
+                                    }
+                                },
+                                "ctpn": {
+                                    "enabled": false,
+                                    "params": {
+                                        "param1": "1",
+                                        "param2": "high",
+                                        "threshold": "0"
+                                    }
+                                }
+                            },
+                            "ocr": {
+                                "ocr": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "1C",
+                                        "language": "eng"
+                                    }
+                                },
+                                "text_seg": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_fusion": {
+                                "fusion": {
+                                    "enabled": false,
+                                    "params": {
+                                        "engine": "default"
+                                    }
+                                }
+                            },
+                            "data_extraction": {
+                                "table": {
+                                    "enabled": true,
+                                    "params": {
+                                        "engine": "gte"
+                                    }
+                                },
+                                "kvp": {
+                                    "enabled": false,
+                                    "params": {
+                                        "a": "1"
+                                    }
+                                }
+                            },
+                            "post_process": {}
+                        },
+                        "created_at": "2020-08-08 12:00:00",
+                        "updated_at": "2020-08-08 12:00:00"
+                    },
+                    "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+                    "created_at": "09-15-2020 06:51:38",
+                    "updated_at": "09-15-2020 06:51:38"
+                },
+                "metadata": {
+                    "external": {
+                        "1C": "v0.0.39",
+                        "gte": "24Sep2021"
+                    },
+                    "services": {
+                        "kvp": "8142db0",
+                        "auth": "15bc95d",
+                        "document": "e5b7831",
+                        "table": "5685c10",
+                        "ocr": "f5fac91"
+                    }
+                },
+                "document_data": null,
+                "id": "61b95e36b9eb0e0eda3c1617",
+                "document_name": "cf3172ba204e.jpg",
+                "document_score": {
+                    "kvp": 0.85,
+                    "table": 0.85
+                },
+                "file_size": "11 KB",
+                "document_original_name": "Invoice1_1.jpg",
+                "file_type": "IMAGE File",
+                "updated_at": "2021-12-15 03:17:10",
+                "created_at": "2021-12-15 03:17:10",
+                "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/cf3172ba204e.jpg",
+                "status": {
+                    "stages": {
+                        "pre_process": {
+                            "pre_process": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:17:10",
+                                "end_time": "2021-12-15 03:17:11.111694",
+                                "message": "Preprocess process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "ocr": {
+                            "ocr": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:17:11",
+                                "end_time": "2021-12-15 03:17:11.707100",
+                                "message": "OCR process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        },
+                        "data_extraction": {
+                            "table": {
+                                "status": 1,
+                                "start_time": "2021-12-15 03:17:11",
+                                "end_time": "2021-12-15 03:17:16.857324",
+                                "message": "TABLE process success",
+                                "detail_message": "",
+                                "items": null
+                            }
+                        }
+                    },
+                    "final_status": {
+                        "status": 1,
+                        "start_time": "2021-12-15 03:17:10",
+                        "end_time": "2021-12-15 03:17:16",
+                        "message": "Orchestration flow completed",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "category_id": "60404d7ab6740cf1cab1a979",
+                "review_status": "not started",
+                "creator_id": "61b8a5fff056901eba96ccb7",
+                "pages": [
+                    {
+                        "timestamp": 1639538230,
+                        "date": "2021-12-15T03:17:10.000+00:00"
+                    }
+                ]
+            }
+        ],
+        "pagination": {
+            "current_page": 0,
+            "offset": 0,
+            "page_size": 10,
+            "total_number": 7
+        }
+    }
+}

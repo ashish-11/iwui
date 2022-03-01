@@ -1,0 +1,96 @@
+/*!
+ * IBM Services Content Intelligence Toolkit - Document Digitization (6949-08M)
+ * (C) Copyright IBM Corp. 2021, 2022  All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+.bx--modal-content{
+  padding-right: 10px !important;
+}
+
+.upload_button{
+  height: 4.2rem;
+  position: absolute;
+  width: 25.25rem;
+  top: 0;
+  left: -0.15rem;
+  display: flex;
+  padding-top: 1rem;
+  padding-left: 0.875rem;
+}
+
+.upload_dialog_select_holder{
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.upload_dialog_category_description_container {
+  margin-top: 1rem;
+}
+
+.drag_drop_upload {
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.drag-area{
+  border: 2px dashed rgb(30, 8, 235);
+  // height: 250px;
+  // width: 700px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.drag-area.active{
+  border: 2px solid #fff;
+}
+.drag-area .icon{
+  font-size: 100px;
+  color: rgb(75, 74, 74);
+}
+.drag-area header{
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+}
+.drag-area span{
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+  margin: 10px 0 15px 0;
+}
+.drag-area button{
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #5256ad;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.drag-area img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.bx--file__drop-container{
+  border: none !important;
+}
+.bx--file-browse-btn:focus, .bx--file-browse-btn:hover {
+  outline: none;
+}
+.bx--file-browse-btn:active{
+   color: none;
+
+}
+.bx--file-browse-btn:hover, .bx--file-browse-btn:focus, 
+.bx--file-browse-btn:active, .bx--file-browse-btn:active:visited {
+  // /* text-decoration: underline; */
+}

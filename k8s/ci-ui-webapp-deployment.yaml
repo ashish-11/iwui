@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-ui-webapp
+  labels:
+    app: ci-ui-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appName: ci-ui-webapp
+  template:
+    metadata:
+      labels:
+        appName: ci-ui-webapp
+    spec:
+      containers:
+      - name: ci-ui-webapp
+        image: image-registry.openshift-image-registry.svc:5000/dev/ci-ui-webapp:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8090
+            protocol: TCP

@@ -1,0 +1,53 @@
+/*!
+ * IBM Services Content Intelligence Toolkit - Document Digitization (6949-08M)
+ * (C) Copyright IBM Corp. 2021, 2022  All Rights Reserved
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+.user_management__banner {
+  padding-top: $spacing-07;
+  padding-bottom: $spacing-07;
+}
+.user_management__heading {
+  @include carbon--type-style("productive-heading-06");
+}
+
+.user_management__sort_button {
+  width: 1.5rem;
+  height: 1.5rem;
+  float: right;
+  transition: outline 110ms cubic-bezier(0, 0, 0.38, 0.9),
+    background-color 110ms cubic-bezier(0, 0, 0.38, 0.9);
+  &:hover {
+    transition: outline 110ms cubic-bezier(0, 0, 0.38, 0.9),
+      background-color 110ms cubic-bezier(0, 0, 0.38, 0.9);
+    background-color: #cacaca;
+  }
+}
+
+.user_management__sort_header {
+  svg {
+    opacity: 1;
+  }
+}
+
+.user_management__header_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_management__filter-menu {
+  height: 1rem;
+  width: 1rem;
+  float: right;
+}
+
+.user_management__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_management__edit_role {
+  cursor: pointer;
+  width: 2rem;
+}

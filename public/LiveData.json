@@ -1,0 +1,254 @@
+{
+    "ret_code": 200,
+    "msg": "SUCCESS",
+    "data": {
+        "category": {
+            "ui_display": true,
+            "description": "Example description 1c+gte",
+            "selected_models": null,
+            "id": "60404d7ab6740cf1cab1a979",
+            "name": "1C+GTE",
+            "config": {
+                "id": "5f3b9e9fbb5dfcb0651a3d76",
+                "kvp_definition": {
+                    "reject_keys": [
+                        "a",
+                        "b",
+                        "c"
+                    ],
+                    "synonyms": [
+                        "a1",
+                        "b2",
+                        "c3"
+                    ],
+                    "keys": [
+                        {
+                            "key": "Invoice Number",
+                            "type": "string",
+                            "regex": [
+                                null,
+                                null
+                            ],
+                            "mapping": [
+                                "Invoice No",
+                                "Serial Number"
+                            ],
+                            "words": [
+                                "Invoice",
+                                "No",
+                                "Serial"
+                            ],
+                            "mandatory": true,
+                            "virtual": false
+                        },
+                        {
+                            "key": "Invoice Number",
+                            "type": "string",
+                            "regex": [
+                                null,
+                                null
+                            ],
+                            "mapping": [
+                                "Invoice No",
+                                "Serial Number"
+                            ],
+                            "words": [
+                                "Invoice",
+                                "No",
+                                "Serial"
+                            ],
+                            "mandatory": true,
+                            "virtual": false
+                        },
+                        {
+                            "key": "Invoice Number",
+                            "type": "string",
+                            "regex": [
+                                null,
+                                null
+                            ],
+                            "mapping": [
+                                "Invoice No",
+                                "Serial Number"
+                            ],
+                            "words": [
+                                "Invoice",
+                                "No",
+                                "Serial"
+                            ],
+                            "mandatory": true,
+                            "virtual": false
+                        }
+                    ]
+                },
+                "name": "Invoice",
+                "pipeline_setting": {
+                    "pre_process": {
+                        "pre_process": {
+                            "enabled": true,
+                            "params": {
+                                "engine": "preprocess",
+                                "param2": "high"
+                            }
+                        },
+                        "segmentation": {
+                            "enabled": false,
+                            "params": {
+                                "param1": "1",
+                                "param2": "high"
+                            }
+                        },
+                        "ctpn": {
+                            "enabled": false,
+                            "params": {
+                                "param1": "1",
+                                "param2": "high",
+                                "threshold": "0"
+                            }
+                        }
+                    },
+                    "ocr": {
+                        "ocr": {
+                            "enabled": true,
+                            "params": {
+                                "engine": "1C",
+                                "language": "eng"
+                            }
+                        },
+                        "text_seg": {
+                            "enabled": false,
+                            "params": {
+                                "engine": "default"
+                            }
+                        }
+                    },
+                    "data_fusion": {
+                        "fusion": {
+                            "enabled": false,
+                            "params": {
+                                "engine": "default"
+                            }
+                        }
+                    },
+                    "data_extraction": {
+                        "table": {
+                            "enabled": true,
+                            "params": {
+                                "engine": "gte"
+                            }
+                        },
+                        "kvp": {
+                            "enabled": false,
+                            "params": {
+                                "a": "1"
+                            }
+                        }
+                    },
+                    "post_process": {}
+                },
+                "created_at": "2020-08-08 12:00:00",
+                "updated_at": "2020-08-08 12:00:00"
+            },
+            "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+            "created_at": "09-15-2020 06:51:38",
+            "updated_at": "09-15-2020 06:51:38"
+        },
+        "metadata": {
+            "external": {
+                "1C": "v0.0.39",
+                "gte": "24Sep2021"
+            },
+            "services": {
+                "kvp": "8142db0",
+                "auth": "15bc95d",
+                "document": "0c8e2e5",
+                "table": "5685c10",
+                "ocr": "f5fac91"
+            }
+        },
+        "document_data": null,
+        "id": "61b9ef9ebeafcb39f9be01f1",
+        "document_name": "5984796a4018.pdf",
+        "document_score": {
+            "kvp": 0.85,
+            "table": 0.85
+        },
+        "file_size": "590 KB",
+        "document_original_name": "10512021092900004592.pdf",
+        "file_type": "PDF",
+        "updated_at": "2021-12-15 13:37:34",
+        "created_at": "2021-12-15 13:37:34",
+        "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/5984796a4018.pdf",
+        "status": {
+            "stages": {
+                "pre_process": {
+                    "pre_process": {
+                        "status": 1,
+                        "start_time": "2021-12-15 13:37:34",
+                        "end_time": "2021-12-15 13:37:41.029183",
+                        "message": "Preprocess process success",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "ocr": {
+                    "ocr": {
+                        "status": 1,
+                        "start_time": "2021-12-15 13:37:41",
+                        "end_time": "2021-12-15 13:38:13.238288",
+                        "message": "OCR process success",
+                        "detail_message": "",
+                        "items": null
+                    }
+                },
+                "data_extraction": {
+                    "table": {
+                        "status": 1,
+                        "start_time": "2021-12-15 13:38:13",
+                        "end_time": "2021-12-15 13:38:48.020769",
+                        "message": "TABLE process success",
+                        "detail_message": "",
+                        "items": null
+                    }
+                }
+            },
+            "final_status": {
+                "status": 1,
+                "start_time": "2021-12-15 13:37:34",
+                "end_time": "2021-12-15 13:38:48",
+                "message": "Orchestration flow completed",
+                "detail_message": "",
+                "items": null
+            }
+        },
+        "category_id": "60404d7ab6740cf1cab1a979",
+        "review_status": "not started",
+        "creator_id": "61b8a5fff056901eba96ccb7",
+        "pages": [
+            {
+                "page_num": "1",
+                "thumbnail": "http://localhost:3000/page_1_1.jpg",
+                "image": "http://localhost:3000/page_1_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_1_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f2"
+            },
+            {
+                "page_num": "2",
+                "thumbnail": "http://localhost:3000/page_2_1.jpg",
+                "image": "http://localhost:3000/page_2_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_2_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f3"
+            },
+            {
+                "page_num": "3",
+                "thumbnail": "http://localhost:3000/page_3_1.jpg",
+                "image": "http://localhost:3000/page_3_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_3_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f4"
+            }
+        ]
+    }
+}
