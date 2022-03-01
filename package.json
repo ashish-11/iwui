@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@stomp/stompjs": "5.0.2",
     "axios": "0.19.2",
     "carbon-components": "10.11.2",
@@ -12,8 +13,10 @@
     "core-js": "3.6.5",
     "env-cmd": "10.1.0",
     "history": "4.10.1",
+    "jsx-runtime": "^1.2.0",
     "konva": "5.0.1",
     "lodash": "4.17.15",
+    "minio": "^7.0.26",
     "moment": "2.25.3",
     "moment-timezone": "0.5.31",
     "node-sass": "4.14.1",

@@ -1,0 +1,61 @@
+{
+    "ret_code": 200,
+    "msg": "SUCCESS",
+    "data": {
+        "category": {
+            "ui_display": true,
+            "description": "Example description 1c+gte",
+            "selected_models": null,
+            "id": "60404d7ab6740cf1cab1a979",
+            "name": "FormRecogniser",
+            
+            "global_category_config_id": "5f3b9e9fbb5dfcb0651a3d76",
+            "created_at": "09-15-2020 06:51:38",
+            "updated_at": "09-15-2020 06:51:38"
+        },
+       
+        "document_data": null,
+        "id": "61b9ef9ebeafcb39f9be01f1",
+        "document_name": "5984796a4018.pdf",
+        "document_score": {
+            "kvp": 0.85,
+            "table": 0.85
+        },
+        "file_size": "590 KB",
+        "document_original_name": "10512021092900004592.pdf",
+        "file_type": "PDF",
+        "updated_at": "2021-12-15 13:37:34",
+        "created_at": "2021-12-15 13:37:34",
+        "file_input_uri": "https://ci-dev.ci-digitization-asset-c-0d5578008c31ec11b4b087bade493d9b-0000.us-south.containers.appdomain.cloud/resources/input/5984796a4018.pdf",
+        
+        "category_id": "60404d7ab6740cf1cab1a979",
+        "review_status": "not started",
+        "creator_id": "61b8a5fff056901eba96ccb7",
+        "pages": [
+            {
+                "page_num": "1",
+                "thumbnail": "http://localhost:3000/page_1_1.jpg",
+                "image": "http://localhost:3000/page_1_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_1_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f2"
+            },
+            {
+                "page_num": "2",
+                "thumbnail": "http://localhost:3000/page_2_1.jpg",
+                "image": "http://localhost:3000/page_2_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_2_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f3"
+            },
+            {
+                "page_num": "3",
+                "thumbnail": "http://localhost:3000/page_3_1.jpg",
+                "image": "http://localhost:3000/page_3_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_3_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f4"
+            }
+        ]
+    }
+}

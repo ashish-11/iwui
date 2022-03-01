@@ -1,0 +1,33 @@
+Left Side Bar
+In table.js => image.imageList is used to render list of images in the left side bar and by default, 0th index index is selected. 
+In image.js => this redux file updates or add the selected image which gets render in the middle section.
+
+//Middle section data
+Table Page.js
+In Table.js => tableStore list has the list of table data which needs to be rendered using konva on the top of selected image.
+In components/core/table.js => which inits the inital table data into the konva layer and then it is being used to update or modify the konva data.
+When we splitcells, It used ContentMenu, ConfirmMenu to confirm and update the details.
+In table.js => updateDocumentDatas method is being used to perform the actions like splitcells and then modified data is being passed to the backend 
+via PUT API call. and data in the response needs to be tableConverted using "tableConverter.js" and then state is being updated.
+
+Right Side Bar
+In table.js => table.documentDatas.pages is being used to render the Right Side data. which then uses pages[index].table to render the data in tabular format.
+Again after updating like (Split Cells, Merge Cells, ) operations, "updateDocumentDatas" action is being called, which again makes an API call to
+the backend to update the documentDatas.pages[index].table data which will show the similar actions in RIGHT panel that we perform using Konva in middle.
+
+Currently when we split table cells then it show us the output in Konva that cells are being splitted in actual, As konva do it and add new cells.
+But These details are not properly rendering the Right Side Panel because we are making PUT API call, and we are not updating the documentDatas to
+update the RIGHT SIDE data. This is because, we don't have the data like we have static (Livedata.json file), Similarly, if we have updates .json file
+which is the updated data after split operations, then we can show the performed operations in RIGHT SIDE panel as well.
+
+
+
+
+=> NewTable functionality.
+When we click on new Table icon then it calls "_createBorderedTable" function in tableTopeBar.js for bordered table and "_createBorderlessTable"
+for borderless table, which then calls table.initMask which is defined in components/core/Mask.js. In this js file, a new table and id gets created
+and konva creates layers and group of new table.
+
+When we click on extract then it calls "_processMenu" function in components/ContentMenu.js which actually processes the data an perform some
+operations related to konva and invokes "addOrModifyTable" where params is the newly created table data. This call is PUT call which updates 
+table data in the backend. and then it re render the table in the UI for the updated response.

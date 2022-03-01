@@ -467,7 +467,7 @@ export default class TableRightContent extends Component {
                         </div>
                       </div>
                       <div className="kvpBody">
-                        <input type="text" className="kvpBodyInput" key={`key_${documentKvp[key][key]}`} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
+                      <input type="text" className="kvpBodyInput" key={`key_${documentKvp[key][key]}`} name={key} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
                       </div>
                     </div>
                   );

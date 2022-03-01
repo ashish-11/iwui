@@ -227,18 +227,27 @@
         "pages": [
             {
                 "page_num": "1",
-                "thumbnail": "139_req_id_10512021092900004592_202201284239603294.pdf/thumbnails/thumbnail_page_1.png",
+                "thumbnail": "http://localhost:3000/page_1_1.jpg",
                 "image": "http://localhost:3000/page_1_2.jpg",
-                "image_fullsize": "139_req_id_10512021092900004592_202201284239603294.pdf/storage/OCR/139_req_id_10512021092900004592/139_req_id_10512021092900004592_1.jpg",
+                "image_fullsize": "http://localhost:3000/page_1_3.jpg",
                 "document_id": "61b9ef9ebeafcb39f9be01f1",
                 "id": "61b9ef9ebeafcb39f9be01f2"
-            },{
+            },
+            {
                 "page_num": "2",
-                "thumbnail": "02fdd65c-5e8a-42cf-8870-86971a9c969e_202110010354169273.pdf/thumbnails/thumbnail_page_1.png",
-                "image": "http://localhost:3000/page_1_2.jpg",
-                "image_fullsize": "02fdd65c-5e8a-42cf-8870-86971a9c969e_202110010354169273.pdf/storage/OCR/02fdd65c-5e8a-42cf-8870-86971a9c969e/02fdd65c-5e8a-42cf-8870-86971a9c969e_1.jpg",
+                "thumbnail": "http://localhost:3000/page_2_1.jpg",
+                "image": "http://localhost:3000/page_2_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_2_3.jpg",
                 "document_id": "61b9ef9ebeafcb39f9be01f1",
-                "id": "61b9ef9ebeafcb39f9be01f2"
+                "id": "61b9ef9ebeafcb39f9be01f3"
+            },
+            {
+                "page_num": "3",
+                "thumbnail": "http://localhost:3000/page_3_1.jpg",
+                "image": "http://localhost:3000/page_3_2.jpg",
+                "image_fullsize": "http://localhost:3000/page_3_3.jpg",
+                "document_id": "61b9ef9ebeafcb39f9be01f1",
+                "id": "61b9ef9ebeafcb39f9be01f4"
             }
         ]
     }
