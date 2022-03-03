@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://iwciacr.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a8fd7475ca834ddabb6703b542df0e82 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9163e8035e5e4f5aaa7a48ea76f727f1 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_c11d7f0658d5483c96bca822beecfd5c }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b15cc961484c40d6afa24aab6196857e }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: iwciacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a8fd7475ca834ddabb6703b542df0e82 }}/iwciacr/table:${{ github.sha }}
+        tags: iwciacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c11d7f0658d5483c96bca822beecfd5c }}/iwciacr/table:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'iwui'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_70ed8c8bef9742cbb6216ca7abfc1287 }}
-        images: 'iwciacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_a8fd7475ca834ddabb6703b542df0e82 }}/iwciacr/table:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_da94dff97978478b9fee8822db93949a }}
+        images: 'iwciacr.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c11d7f0658d5483c96bca822beecfd5c }}/iwciacr/table:${{ github.sha }}'
