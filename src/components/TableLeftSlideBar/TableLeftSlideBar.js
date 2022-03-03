@@ -49,7 +49,6 @@ export default class TableLeftSlideBar extends Component {
 
         let page = Number(event.target.value);
         if(imagefile && page == imagefile.id){
-            console.log('same')
         } else{
             this._imageSelect(imageList[page-1]);
         }

@@ -70,7 +70,7 @@ export default class ConfirmMenu extends Component {
         let TableGroup = layer.findOne('#' + parameters.id);
         //Set finally confirm menu active.
         createContentMenu(containerRect.top + TableGroup.getClientRect().y + TableGroup.getClientRect().height + 5, 
-            containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368,{id: parameters.id});
+            containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368,{id: parameters.id, subOperation: parameters.subOperation});
         endSplit();
         
     }
@@ -129,7 +129,7 @@ export default class ConfirmMenu extends Component {
             let containerRect = stage.container().getBoundingClientRect();
             let TableGroup = layer.findOne('#' + parameters.id);
             createContentMenu(containerRect.top + TableGroup.getClientRect().y + TableGroup.getClientRect().height + 5, 
-                containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368,{id: parameters.id});
+                containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368,{id: parameters.id, subOperation: parameters.subOperation});
         }
         endSplit();
     }

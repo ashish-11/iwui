@@ -15,7 +15,7 @@ import { addOneClient, openClients, clear } from './socket'
 import * as Constants from '../../service/constants';
 import FileUtil from "../../util/fileUtils";
 import { createLoading, closeLoading } from './loading.js';
-import { initializeMinioClient, downloadObject } from '../../service/minioClient';
+import { initializeMinioClient, downloadObject, getPresignedUrl } from '../../service/minioClient';
 
 const confidenceFilterMap = {
   0: "0,100",
@@ -724,14 +724,41 @@ export const exportAll = createAction("@@tf/file/exportAll",
 export const singalDownloadFile = createAction("@@tf/file/singalDownloadFile",
   (id) => (dispatch, getState, httpClient) => {
     // FileUtil.openNewTab(`${Constants.BASE_URL}/documents/download?ids=${id}`);
-    let imageFile = getState().image.imagefile;
-    let minioClient = initializeMinioClient();
-    let response = downloadObject(
-      minioClient,
-      Constants.Minio_Bucket_Name,
-      '009cd9f8-3918-4dba-af42-450ac5076966/InvoiceTS16.pdf',
-      './InvoiceTS16.pdf'
-    );
+    // dispatch(createLoading());
+    let {pdfPath} = getState().table;
+    if(pdfPath && pdfPath != null && pdfPath != ""){
+
+      let minioClient = initializeMinioClient();
+      getPresignedUrl(
+        minioClient,
+        Constants.Minio_Bucket_Name,
+        pdfPath,
+      ).then(presignedUrl=>{
+        try{
+          let iframe = document.createElement("iframe");
+          iframe.src = presignedUrl;
+          iframe.style.display = "none";
+          document.body.appendChild(iframe);
+          dispatch(createMessage('info', {
+            subtitle: "Starting the download",
+            title: "Info"
+          }))
+        } catch(err){
+          // dispatch(closeLoading());
+          console.log(err);
+          dispatch(createMessage('error', {
+            subtitle: "File not found",
+            title: "Error"
+          }))
+        }
+      }).catch(err=>{
+        // dispatch(closeLoading());
+        dispatch(createMessage('error', {
+          subtitle: "Unable to get path",
+          title: "Error"
+        }))
+      })      
+    }
   }
 )
 

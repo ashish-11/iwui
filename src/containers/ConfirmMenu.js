@@ -82,8 +82,8 @@ const mapDispathToProps =(dispath)=>{
         updateIsCreateTable:(data)=>{
             dispath(updateIsCreateTable(data));
         },
-        updateDocumentDatas:(tId,imageX,imageY,operation,newtableData)=>{
-            dispath(updateDocumentDatas(tId,imageX,imageY,operation,newtableData));
+        updateDocumentDatas:(tId,imageX,imageY,operation,newtableData,subOperation)=>{
+            dispath(updateDocumentDatas(tId,imageX,imageY,operation,newtableData,subOperation));
         },
         initExistData:(imgdata)=>{
             dispath(initExistData(imgdata));

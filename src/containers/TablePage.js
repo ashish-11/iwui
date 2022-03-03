@@ -14,6 +14,8 @@ import { cleanOverflowMenu } from '../redux/modules/overflowmenu';
 import { cleanConfirmMenu } from '../redux/modules/confirmmenu'
 import { singalDownloadFile } from '../redux/modules/file';
 import { clear } from '../redux/modules/socket';
+import * as Constants from '../service/constants';
+import { initializeMinioClient, downloadObject, getPresignedUrl } from '../service/minioClient';
 
 class TablePageContainer extends Component {
   static propTypes = {
@@ -70,8 +72,28 @@ class TablePageContainer extends Component {
     this.props.history.push('/dashboard');
   }
 
-  onSingalDownloadFile() {
+  async onSingalDownloadFile() {
     this.props.singalDownloadFile(this.props.match.params.id);
+    // let {documentDatas} = this.props;
+    // console.log(documentDatas)
+    // if(documentDatas && documentDatas.document_name != null && documentDatas.document_original_name != ""){
+
+    //   let minioClient = initializeMinioClient();
+    //   let presignedUrl = await getPresignedUrl(
+    //     minioClient,
+    //     Constants.Minio_Bucket_Name,
+    //     `${documentDatas.document_name}/${documentDatas.document_original_name}.pdf`,
+    //   );
+
+    //   if(presignedUrl == "" && presignedUrl == null){
+    //     cr
+    //   }
+    //   console.log(presignedUrl);
+    //   let iframe = document.createElement("iframe");
+    //   iframe.src = presignedUrl;
+    //   iframe.style.display = "none";
+    //   document.body.appendChild(iframe);
+    // }
   }
 
   render() {

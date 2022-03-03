@@ -76,7 +76,6 @@ export default class TableRightContent extends Component {
 
   componentDidMount(){
     random = Math.random() * (999 - 1) + 1;
-    console.log(random)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -126,17 +125,14 @@ export default class TableRightContent extends Component {
         this.setState({ showReviewSubmit: false })
       }
     } else if (item == "kvp") {
-      console.log(this.state.documentKvpData);
       let document_kvp_data = this.state.documentKvpData;
       let document_kvp_arr = []
       if (document_kvp_data != {}) {
         Object.keys(document_kvp_data).map(key => {
           let d = {}
           d[key] = document_kvp_data[key]
-          console.log(d);
           document_kvp_arr.push(d)
         })
-        console.log(document_kvp_arr);
         let { updateKvpData } = this.props;
         let data = {
           updatedkvpData: document_kvp_arr,
@@ -151,7 +147,6 @@ export default class TableRightContent extends Component {
 
   _handleTextChange = (item) => (e) => {
     if (item == "review") {
-      console.log(e.target.value)
       if (e.target.value == "") {
         this.setState({ showReviewSubmit: false, showReviewTradeSubmit: false, review_comment: e.target.value })
       } else {
@@ -161,8 +156,6 @@ export default class TableRightContent extends Component {
       if (e.target.value == "") {
         this.setState({ showKvpSubmit: false })
       } else {
-        console.log(e.target.name);
-        console.log(e.target.value);
         let document_kvp_data = this.state.documentKvpData;
         document_kvp_data[e.target.name] = e.target.value;
         try {
@@ -289,7 +282,6 @@ export default class TableRightContent extends Component {
   }
 
   _checkIfDocumentMetadata = (documentMetadata) => {
-    console.log(documentMetadata.comment)
     if(documentMetadata.comment == "" || documentMetadata.comment == null)
       return false
     return true
@@ -467,7 +459,7 @@ export default class TableRightContent extends Component {
                         </div>
                       </div>
                       <div className="kvpBody">
-                      <input type="text" className="kvpBodyInput" key={`key_${documentKvp[key][key]}`} name={key} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
+                        <input type="text" className="kvpBodyInput" key={`key_${documentKvp[key][key]}`} name={key} defaultValue={documentKvp[key][key]} onChange={this._handleTextChange("kvp")}></input>
                       </div>
                     </div>
                   );

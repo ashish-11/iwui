@@ -47,6 +47,7 @@ const initialState = {
   redoEnabled: false,
   tableEditFlag: false,
   splitFlag: false,
+  pdfPath: ""
 }
 export const selectTable = createAction('@@tf/table/selectTable');
 export const clearSelectTable = createAction('@@tf/table/clearSelectTable');
@@ -539,7 +540,8 @@ const processDocumentData = (data) => {
     document_data: document_data,
     pages_data: page_data,
     metadata: data.metadata,
-    kvp: data.kvp
+    kvp: data.kvp,
+    pdf_path: data.pdfPath
   }
 }
 
@@ -667,16 +669,15 @@ export const initTableData = createAction('@@tf/table/initTableData');
 export const updateOverlayShow = createAction('@@tf/table/updateOverlayShow');
 export const updateDocumentDatas = createAction(
   "@@tf/table/updateDocumentDatas",
-  (tId, imageX, imageY, operation, newtableData) => (dispatch, getState, httpClient) => {
+  (tId, imageX, imageY, operation, newtableData, subOperation) => (dispatch, getState, httpClient) => {
     // dispatch(startLoading());
     dispatch(resetUndoRedo())
     const state = getState();
     let indata = newtableData.id ? newtableData : _.find(state.table.tableStore, { 'id': tId });
-    console.log("dada=====>>>>>",indata);
     let validation_data = newtableData.id ? newtableData : tableConverter.convertTableDataToParam(indata, imageX, imageY, operation);
    
     let imgdata = _.find(state.table.imageList, { 'selected': true });
-    console.log("=====>>>>>",this);
+    validation_data['subOperation'] = subOperation;
     return httpClient
       .put(`${Constants.DATA_BASE_URL}/documents/${state.table.documentId}/pages/${imgdata.name}/tables/${indata.name}`, validation_data,
         {
@@ -685,7 +686,6 @@ export const updateDocumentDatas = createAction(
           }
         })
       .then((res) => {
-        console.log("kya karu=======>",res);
         // get page index
         let documentDatas = getState().table.documentDatas
         let pages = documentDatas.pages
@@ -799,9 +799,10 @@ export const updateOverlayView = createAction('@@tf/table/updateOverlayView',
 )
 
 export const addOrModifyTable = createAction('@@tf/table/addOrModifyTable',
-  (newTableData) => (dispatch, getState, httpClient) => {
+  (newTableData, operation) => (dispatch, getState, httpClient) => {
     // request
     console.log("AddorModifyData");
+    console.log(operation)
     const state = getState();
     let imgdata = _.find(state.table.imageList, { 'selected': true });
     // get the page id from page number
@@ -988,16 +989,64 @@ export const downloadCsv = createAction('@@tf/table/downloadCsv', (tableId) =>
     const pageNum = getState().image.imagefile.id;
     // get page Id from document
     const documentDatas = getState().table.documentDatas;
+    const documentId = getState().table.documentId;
     const page = _.find(documentDatas.pages, (page) => page.page_num === `${pageNum}`)
-    if (!!page) {
-      // console.log(`downloading table for page: ${page.id}, table: ${tableId}`)
-      FileUtil.openNewTab(`${Constants.BASE_URL}/pages/${page.id}/tables/${tableId}/csv`);
-    } else {
-      dispatch(createMessage('error', {
-        subtitle: "Cannot find the page",
-        title: "Error"
-      }))
-    }
+    httpClient
+      .get(`${Constants.DATA_BASE_URL}/getExtractedData`, {
+        headers: {
+          need_loading: 'true'
+        },
+        params: {
+          doc_id: documentId,
+        }
+      })
+      .then((res) => {
+        // dispatch(getPageData(id, 0));
+        if(res.data && res.data.length){
+          let jsonData = res.data;
+          let csvData = []
+          let headers = ['Key,Value,Confidence,Row'];
+          jsonData.map(item=>{
+            const { keyText, valueText, confidence_score, row } = item;
+            console.log(item);
+            csvData.push([keyText, valueText.replace(',', ''), confidence_score, row])
+          })
+          let data = [...headers, ...csvData].join('\n')
+          const blob = new Blob([data], {type: 'text/csv'});
+          const a = document.createElement('a');
+          a.download = 'data.csv';
+          a.href = window.URL.createObjectURL(blob);
+          const clickEvt = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+          })
+          a.dispatchEvent(clickEvt)
+          a.remove()
+          dispatch(createMessage('info', {
+            subtitle: "Starting the Download",
+            title: "Info"
+          }))
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err) {
+          dispatch(createMessage('error', {
+            subtitle: "Get downloadCsv data error",
+            title: "Error"
+          }))
+        }
+      });
+    // if (!!page) {
+    //   // console.log(`downloading table for page: ${page.id}, table: ${tableId}`)
+    //   FileUtil.openNewTab(`${Constants.BASE_URL}/pages/${page.id}/tables/${tableId}/csv`);
+    // } else {
+    //   dispatch(createMessage('error', {
+    //     subtitle: "Cannot find the page",
+    //     title: "Error"
+    //   }))
+    // }
 
   });
 // Review Comment API & Functionality
@@ -1364,6 +1413,7 @@ export const TableReducer = handleActions(
         pagesDatas: datas.pages_data,
         documentMetadata: datas.metadata,
         documentKvp: datas.kvp,
+        pdfPath: datas.pdf_path,
         markedForReview: datas.document_data ? datas.document_data.review_status.toLowerCase() === 'completed' : false
       };
     },

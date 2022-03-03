@@ -59,7 +59,7 @@ export default class ContentMenu extends Component {
                     // call api the parameters.operation means cell edit.
                     // updateDocumentDatas(parameters.id,image.x(),image.y(),parameters.operation,{})
                     let newTableData = tableConverter.convertTableEditDataToParam(basetable, image.x(),image.y())
-                    addOrModifyTable(newTableData)
+                    addOrModifyTable(newTableData, parameters.op)
                 } else {
                     // modify cell
                     layer.find('Group').destroy();
@@ -68,7 +68,7 @@ export default class ContentMenu extends Component {
 
                     let image = layer.findOne('Image');
                     // call api the table modify
-                    updateDocumentDatas(parameters.id,image.x(),image.y(),'',{})
+                    updateDocumentDatas(parameters.id,image.x(),image.y(),'',{},parameters.subOperation)
                 }
 
             }
@@ -128,7 +128,7 @@ export default class ContentMenu extends Component {
             clearSplitCell();
             // call api the table create
             // updateDocumentDatas(parameters.id,image.x(),image.y(),'',returnData)
-            addOrModifyTable(returnData)
+            addOrModifyTable(returnData, parameters.op)
             updateIsCreateTable(false);
         }
 

@@ -41,6 +41,7 @@ export default class TableTopBar extends Component {
         this._createBorderedTable = this._createBorderedTable.bind(this);
         this._createBorderlessTable = this._createBorderlessTable.bind(this);
         this._mergeCells = this._mergeCells.bind(this);
+        this._mergeRows = this._mergeRows.bind(this);
         this._splitVerticalCells = this._splitVerticalCells.bind(this);
         this._splitHorizontalCells = this._splitHorizontalCells.bind(this);
         this._setHeader = this._setHeader.bind(this);
@@ -168,7 +169,7 @@ export default class TableTopBar extends Component {
         layer.draw();
         clearSelectedCell();
         updateStatus({ id: temptable.id, status: 'modify' });
-        this._showContentMenu(temptable)
+        this._showContentMenu(temptable, 'clear_header')
     }
 
     _setHeader() {
@@ -200,14 +201,12 @@ export default class TableTopBar extends Component {
         layer.draw();
         clearSelectedCell();
         updateStatus({ id: temptable.id, status: 'modify' });
-        this._showContentMenu(temptable)
+        this._showContentMenu(temptable, 'set_header')
     }
 
     _splitVerticalCells() {
-        console.log("VerticalCellssplitCell")
         let { selectedCell, tableStore, createConfirmMenu, cleanContentMenu, addSplitCell, changeVSplitMode, addUndoHistory, startTableEdit, startSplit } = this.props;
         // addUndoHistory()
-        console.log("checking",this.props.startSplit)
         if (!selectedCell || selectedCell.length === 0) {
             return;
         }
@@ -271,7 +270,7 @@ export default class TableTopBar extends Component {
         let containerRect = stage.container().getBoundingClientRect();
         let Targetcell = layer.findOne('#' + newCells[newCells.length - 1].id);
         createConfirmMenu(containerRect.top + Targetcell.getClientRect().y + Targetcell.getClientRect().height,
-            containerRect.left + Targetcell.getClientRect().x + Targetcell.getClientRect().width - 48, { id: temptable.id });
+            containerRect.left + Targetcell.getClientRect().x + Targetcell.getClientRect().width - 48, { id: temptable.id, subOperation: 'split_vertical' });
         this.setState({
             horizontalNumber: 2,
             verticalNumber: 2
@@ -280,7 +279,6 @@ export default class TableTopBar extends Component {
     }
 
     _splitHorizontalCells() {
-        console.log("splitHorizontalCells")
         let { selectedCell, tableStore, createConfirmMenu, cleanContentMenu, addSplitCell, changeHSplitMode, addUndoHistory, startTableEdit, startSplit } = this.props;
         if (!selectedCell || selectedCell.length === 0) {
             return;
@@ -346,7 +344,7 @@ export default class TableTopBar extends Component {
         console.log(containerRect.top, Targetcell.getClientRect().y, Targetcell.getClientRect().height)
         console.log(containerRect.left , Targetcell.getClientRect().x , Targetcell.getClientRect().width - 48)
         createConfirmMenu(containerRect.top + Targetcell.getClientRect().y + Targetcell.getClientRect().height,
-            containerRect.left + Targetcell.getClientRect().x + Targetcell.getClientRect().width - 48, { id: temptable.id });
+            containerRect.left + Targetcell.getClientRect().x + Targetcell.getClientRect().width - 48, { id: temptable.id, subOperation: 'split_horizontal' });
         this.setState({
             horizontalNumber: 2,
             verticalNumber: 2
@@ -421,10 +419,88 @@ export default class TableTopBar extends Component {
             });
             clearSelectedCell();
             clearMergeCell();
-            this._showContentMenu(temptable);
+            this._showContentMenu(temptable, 'merge_cells');
         } else {
             if (temptable.status === 'modify') {
-                this._showContentMenu(temptable);
+                this._showContentMenu(temptable, 'merge_cells');
+            }
+            createMessage('error', { title: 'Cells merge failed!', subtitle: 'Can not merge selected cells,Please confirm' });
+        }
+
+    }
+
+
+    _mergeRows() {
+        if (this.props.selectedCell.length < 2) return null;
+        let { selectedCell, tableStore, createMessage,
+            cleanContentMenu, deleteCell, clearSelectedCell,
+            addCell, clearMergeCell, updateStatus, addUndoHistory, startTableEdit } = this.props;
+        addUndoHistory();
+        cleanContentMenu();
+        let x1 = selectedCell.map(obj => { return obj.x1 });
+        let x2 = selectedCell.map(obj => { return obj.x2 });
+        let y1 = selectedCell.map(obj => { return obj.y1 });
+        let y2 = selectedCell.map(obj => { return obj.y2 });
+        let x = _.concat(x1, x2);
+        let y = _.concat(y1, y2);
+        let minX = _.min(x);
+        let maxX = _.max(x);
+        let minY = _.min(y);
+        let maxY = _.max(y);
+
+        //find current table
+        let temptable = {};
+        if (tableStore.length === 1) {
+            temptable = tableStore[0]
+        } else {
+            tableStore.forEach((table) => {
+                if (_.find(table.child, { 'id': selectedCell[0].id })) {
+                    temptable = table;
+                }
+            })
+        }
+        startTableEdit(temptable.id)
+        let layer = this.props.getLayer();
+        let newCellArr = _.sortBy(selectedCell, ['x1', 'y1']);
+        if (TableUtil.selectedIsRect(newCellArr, minX, maxX, minY, maxY)) {
+            let cell = {
+                x1: minX,
+                y1: minY,
+                x2: maxX,
+                y2: maxY,
+                id: uuidv4(),
+                label: _.find(this.props.selectedCell, { 'label': 'value' }) ? 'value' : 'header',
+                tableID: selectedCell[0].tableID,
+                tableFormat: selectedCell[0].tableFormat
+            }
+            const { addMergeCell } = this.props;
+            addMergeCell(cell);
+            table.initCell(this.props, cell)//in konva layer drew the new cells
+            selectedCell.forEach((sCell) => {
+                if (!_.isUndefined(layer.findOne('#' + sCell.id)))
+                    layer.findOne('#' + sCell.id).destroy();//in konva layer destroy the old cell
+            })
+            layer.draw();
+            let Targetcell = layer.findOne('#' + cell.id);
+            Targetcell.stroke('#BE15E6');
+            Targetcell.strokeWidth(2);
+            if (this.props.selectedCell) {
+                this.props.selectedCell.forEach((cell) => {
+                    //delte old cell in Redux(tableStore)
+                    deleteCell(cell.id);
+                })
+            }
+            addCell(temptable.id, cell); //add new cell to Redux(tableStore)
+            updateStatus({
+                id: temptable.id,
+                status: 'modify'
+            });
+            clearSelectedCell();
+            clearMergeCell();
+            this._showContentMenu(temptable, 'merge_rows');
+        } else {
+            if (temptable.status === 'modify') {
+                this._showContentMenu(temptable, 'merge_rows');
             }
             createMessage('error', { title: 'Cells merge failed!', subtitle: 'Can not merge selected cells,Please confirm' });
         }
@@ -434,7 +510,7 @@ export default class TableTopBar extends Component {
     /*
         common function to active the finally save menu.
     */
-    _showContentMenu(newtable) {
+    _showContentMenu(newtable, subOperation) {
         let { cleanContentMenu, createContentMenu, cleanOverflowMenu } = this.props;
         cleanContentMenu();
         cleanOverflowMenu();
@@ -443,7 +519,7 @@ export default class TableTopBar extends Component {
         let layer = this.props.getLayer();
         let TableGroup = layer.findOne('#' + newtable.id);
         createContentMenu(containerRect.top + TableGroup.getClientRect().y + TableGroup.getClientRect().height + 5,
-            containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368, { id: newtable.id });
+            containerRect.left + TableGroup.getClientRect().x + TableGroup.getClientRect().width - 368, { id: newtable.id, subOperation: subOperation });
 
     }
 
@@ -577,7 +653,6 @@ export default class TableTopBar extends Component {
     _overlayOperation() {
         const { tableStore, isOverlayShow, cleanOverflowMenu, cleanContentMenu, updateOverlayShow, overlayView } = this.props;
         let layer = this.props.getLayer();
-        console.log("111111",layer)
         layer.find('Transformer').destroy();
         layer.draw();
         if (isOverlayShow) {
@@ -657,6 +732,15 @@ export default class TableTopBar extends Component {
 
                     <div className="tool_text">
                         Merge Cells
+                    </div>
+                </div>
+                <div className={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow ? "tool_icon_disable" : "tool_icon"}
+                    onClick={this._mergeRows.bind(this)}>
+
+                    <MergeCell />
+
+                    <div className="tool_text">
+                        Merge Rows
                     </div>
                 </div>
                 <span className='divider' />

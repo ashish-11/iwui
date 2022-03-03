@@ -1,5 +1,6 @@
 // var Minio = require('minio')
 import { Client } from 'minio';
+import fs from 'fs';
 import Constants from './constants';
 var minioClient = null;
 
@@ -67,11 +68,13 @@ const getPresignedUrl = async (minioClient, bucketName, objectName) => {
 }
 
 const downloadObject = (minioClient, bucketName, objectName, downladPath) => {
+    console.log(downladPath);
     return minioClient.fGetObject(bucketName, objectName, downladPath, function(err){
         if(err) {
             console.log(err);
             return err;
         }
+
         console.log('success');
         return 'success'
     });
