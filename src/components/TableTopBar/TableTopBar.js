@@ -44,6 +44,7 @@ export default class TableTopBar extends Component {
         this._mergeRows = this._mergeRows.bind(this);
         this._mergeColumns = this._mergeColumns.bind(this);
         this._deleteColumns = this._deleteColumns.bind(this);
+        this._deleteRowss = this._deleteRows.bind(this);
         this._splitVerticalCells = this._splitVerticalCells.bind(this);
         this._splitHorizontalCells = this._splitHorizontalCells.bind(this);
         this._setHeader = this._setHeader.bind(this);
@@ -661,6 +662,83 @@ export default class TableTopBar extends Component {
         }
 
     }
+    
+    _deleteRows() {
+        if (this.props.selectedCell.length < 1) return null;
+        let { selectedCell, tableStore, createMessage,
+            cleanContentMenu, deleteCell, clearSelectedCell,
+            addCell, clearMergeCell, updateStatus, addUndoHistory, startTableEdit } = this.props;
+        addUndoHistory();
+        cleanContentMenu();
+        let x1 = selectedCell.map(obj => { return obj.x1 });
+        let x2 = selectedCell.map(obj => { return obj.x2 });
+        let y1 = selectedCell.map(obj => { return obj.y1 });
+        let y2 = selectedCell.map(obj => { return obj.y2 });
+        let x = _.concat(x1, x2);
+        let y = _.concat(y1, y2);
+        let minX = _.min(x);
+        let maxX = _.max(x);
+        let minY = _.min(y);
+        let maxY = _.max(y);
+
+        //find current table
+        let temptable = {};
+        if (tableStore.length === 1) {
+            temptable = tableStore[0]
+        } else {
+            tableStore.forEach((table) => {
+                if (_.find(table.child, { 'id': selectedCell[0].id })) {
+                    temptable = table;
+                }
+            })
+        }
+        startTableEdit(temptable.id)
+        let layer = this.props.getLayer();
+        let newCellArr = _.sortBy(selectedCell, ['x1', 'y1']);
+        if (TableUtil.selectedIsRect(newCellArr, minX, maxX, minY, maxY)) {
+            let cell = {
+                x1: minX,
+                y1: minY,
+                x2: maxX,
+                y2: maxY,
+                id: uuidv4(),
+                label: _.find(this.props.selectedCell, { 'label': 'value' }) ? 'value' : 'header',
+                tableID: selectedCell[0].tableID,
+                tableFormat: selectedCell[0].tableFormat
+            }
+            const { addMergeCell } = this.props;
+            addMergeCell(cell);
+            table.initCell(this.props, cell)//in konva layer drew the new cells
+            selectedCell.forEach((sCell) => {
+                if (!_.isUndefined(layer.findOne('#' + sCell.id)))
+                    layer.findOne('#' + sCell.id).destroy();//in konva layer destroy the old cell
+            })
+            layer.draw();
+            let Targetcell = layer.findOne('#' + cell.id);
+            Targetcell.stroke('#BE15E6');
+            Targetcell.strokeWidth(2);
+            if (this.props.selectedCell) {
+                this.props.selectedCell.forEach((cell) => {
+                    //delte old cell in Redux(tableStore)
+                    deleteCell(cell.id);
+                })
+            }
+            addCell(temptable.id, cell); //add new cell to Redux(tableStore)
+            updateStatus({
+                id: temptable.id,
+                status: 'modify'
+            });
+            clearSelectedCell();
+            clearMergeCell();
+            this._showContentMenu(temptable, 'delete_rows');
+        } else {
+            if (temptable.status === 'modify') {
+                this._showContentMenu(temptable, 'delete_rows');
+            }
+            createMessage('error', { title: 'Delete rows failed!', subtitle: 'Can not delete selected cells,Please confirm' });
+        }
+
+    }
 
 
     /*
@@ -914,7 +992,16 @@ export default class TableTopBar extends Component {
                     <MergeCell />
 
                     <div className="tool_text">
-                        Delete Columns
+                        Delete Column(s)
+                    </div>
+                </div>
+                <div className={this.props.overlayView !== 'table' || this.props.selectedCell.length < 1 || this.props.splitFlag || !isOverlayShow ? "tool_icon_disable" : "tool_icon"}
+                    onClick={this._deleteRows.bind(this)}>
+
+                    <MergeCell />
+
+                    <div className="tool_text">
+                        Delete Row(s)
                     </div>
                 </div>
 
