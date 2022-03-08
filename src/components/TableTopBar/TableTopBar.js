@@ -22,6 +22,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 import Konva from 'konva';
 import { ReactComponent as NewTable } from '../../assets/NewTable.svg';
 import { ReactComponent as MergeCell } from '../../assets/MergeCell.svg';
+import { ReactComponent as DeleteCell } from '../../assets/DeleteCell.svg';
 import { ReactComponent as SplitCells } from '../../assets/SplitCells.svg';
 import { ReactComponent as SplitCellsVertical } from '../../assets/SplitCells-V.svg';
 import { ReactComponent as Headers } from '../../assets/Headers.svg';
@@ -345,7 +346,7 @@ export default class TableTopBar extends Component {
         let containerRect = stage.container().getBoundingClientRect();
         let Targetcell = layer.findOne('#' + newCells[newCells.length - 1].id);
         console.log(containerRect.top, Targetcell.getClientRect().y, Targetcell.getClientRect().height)
-        console.log(containerRect.left , Targetcell.getClientRect().x , Targetcell.getClientRect().width - 48)
+        console.log(containerRect.left, Targetcell.getClientRect().x, Targetcell.getClientRect().width - 48)
         createConfirmMenu(containerRect.top + Targetcell.getClientRect().y + Targetcell.getClientRect().height,
             containerRect.left + Targetcell.getClientRect().x + Targetcell.getClientRect().width - 48, { id: temptable.id, subOperation: 'split_horizontal' });
         this.setState({
@@ -662,7 +663,7 @@ export default class TableTopBar extends Component {
         }
 
     }
-    
+
     _deleteRows() {
         if (this.props.selectedCell.length < 1) return null;
         let { selectedCell, tableStore, createMessage,
@@ -959,7 +960,97 @@ export default class TableTopBar extends Component {
         let tableEngine = documentDatas?.category?.config?.pipeline_setting?.data_extraction?.table?.params?.engine;
         return (
             <React.Fragment>
-                <div className={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow ? "tool_icon_disable" : "tool_icon"}
+
+                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                    {(this.props.selectedCell.length === 0) ?
+                        (<div>
+                            <MergeCell />
+                            <div className="tool_text">
+                                Merge Operations
+                            </div>
+                        </div>)
+                        :
+                        (<Tooltip
+                            placement="bottom"
+                            trigger="hover"
+                            overlayClassName="newtableOverlay"
+                            overlay={"Perform Merge operations like Merge Column/ Merge Row."}
+                        >
+                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                                <OverflowMenu
+                                    renderIcon={() =>
+                                    (<div className="tool_icon">
+                                        <MergeCell />
+                                        <div className="tool_text">
+                                            Merge Operations
+                                        </div>
+                                    </div>)
+                                    }
+                                >
+                                    <OverflowMenuItem
+                                        itemText={'Merge Cell'}
+                                        onClick={this._mergeCells.bind(this)}
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                    <OverflowMenuItem
+                                        itemText={'Merge Row'}
+                                        onClick={this._mergeRows.bind(this)}
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                    <OverflowMenuItem
+                                        itemText={'Merge Column'}
+                                        onClick={this._mergeColumns.bind(this)}
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                </OverflowMenu>
+
+                            </div>
+                        </Tooltip>
+                        )
+                    }
+                </div>
+
+                <span className='divider' />
+
+                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                    {(this.props.selectedCell.length === 0) ?
+                        (<div>
+                            <DeleteCell />
+                            <div className="tool_text">
+                                Delete Operations
+                            </div>
+                        </div>)
+                        :
+                        (<Tooltip
+                            placement="bottom"
+                            trigger="hover"
+                            overlayClassName="newtableOverlay"
+                            overlay={"Perform Merge operations like Merge Column/ Merge Row."}
+                        >
+                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                                <DeleteCell />
+                                <OverflowMenu
+                                    renderIcon={() =>
+                                    (<div className="tool_icon">
+                                        <DeleteCell />
+                                        <div className="tool_text">
+                                            Delete Operations
+                                        </div>
+                                    </div>)
+                                    }>
+                                    <OverflowMenuItem
+                                        itemText={'Delete Row'}
+                                        onClick={this._deleteRows.bind(this)}
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                    <OverflowMenuItem
+                                        itemText={'Delete Column'}
+                                        onClick={this._deleteColumns.bind(this)}
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                </OverflowMenu>
+
+                            </div>
+                        </Tooltip>)
+                    }
+                </div>
+
+                {/*<div className={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow ? "tool_icon_disable" : "tool_icon"}
                     onClick={this._mergeCells.bind(this)}>
 
                     <MergeCell />
@@ -1003,7 +1094,7 @@ export default class TableTopBar extends Component {
                     <div className="tool_text">
                         Delete Row(s)
                     </div>
-                </div>
+                </div> */}
 
                 <span className='divider' />
                 <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length === 0 || this.props.splitCell.length > 0 || !legalHSplit || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
@@ -1182,9 +1273,9 @@ export default class TableTopBar extends Component {
                             overlayClassName="newtableOverlay"
                             overlay={"Click on New table and select table type, Then drag your mouse over a table to select it."}
                         > */}
-                            <div className={(this.props.overlayView !== 'table' || this.props.isCreateTable || !this.props.isOverlayShow || this.props.tableEditFlag || this.props.splitFlag) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
-                                {/* <NewTable/> */}
-                                {/* <OverflowMenu
+                        <div className={(this.props.overlayView !== 'table' || this.props.isCreateTable || !this.props.isOverlayShow || this.props.tableEditFlag || this.props.splitFlag) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                            {/* <NewTable/> */}
+                            {/* <OverflowMenu
                                     renderIcon={() =>
                                     (<div className="tool_icon">
                                         <NewTable />
@@ -1194,7 +1285,7 @@ export default class TableTopBar extends Component {
                                     </div>)
                                     }
                                 > */}
-                                    {/* <OverflowMenuItem
+                            {/* <OverflowMenuItem
                                         itemText={'Bordered Table'}
                                         onClick={this._createBorderedTable.bind(this)}
                                         disabled={this.props.isCreateTable || !this.props.isOverlayShow}
@@ -1204,9 +1295,9 @@ export default class TableTopBar extends Component {
                                         onClick={this._createBorderlessTable.bind(this)}
                                         disabled={this.props.isCreateTable || !this.props.isOverlayShow}
                                     /> */}
-                                {/* </OverflowMenu> */}
+                            {/* </OverflowMenu> */}
 
-                            </div>
+                        </div>
                         {/* </Tooltip> */}
                         {/* <div className={(!(this.props.tableStore.length > 0) ||  this.props.tableStore.length > 1 || !this.props.isOverlayShow)? "tool_icon_disable" : "tool_icon"}
                                 onClick={this._modifyTable.bind(this)}>

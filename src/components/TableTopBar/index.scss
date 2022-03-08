@@ -234,8 +234,6 @@
     fill: #c6c6c6
   }
 }
-
-
 .tool_text{
   margin-top: 5px;
   font-size: 9px;
@@ -320,3 +318,9 @@
 .bx--overflow-menu:focus {
   outline: none;
 }
+.bx--overflow-menu-options__btn {
+  font-size: 0.875rem !important;
+}
+// .bx--overflow-menu{
+//   width: 100%;
+// }
