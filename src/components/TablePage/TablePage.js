@@ -90,7 +90,7 @@ const TablePage = (props) => {
   */
   return (
     <div>
-      <div className="tablePage__toolbar">
+      <div className="tablePage__toolbar" style={{background:'#000'}}>
         <div className="bx--col-lg-12 tablePage__banner_area">
           <div className="bx--row tablePage__banner">
             <div className="bx--col-lg-4 tablePage__info">
@@ -101,8 +101,8 @@ const TablePage = (props) => {
                 {/* <div className="bx--col-lg-2 tablePage__toolbar_icon">
 
                                 </div> */}
-                <div className="tablePage__toolbar_icon">
-                  <Button
+                <div className="tablePage__toolbar_icon downloadBTN">
+                  <Button className="downloadBTN"
                     kind="ghost"
                     hasIconOnly
                     renderIcon={Download20}

@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:#fff;
   }
 
   .tablePage__toolbar_icon{
@@ -88,6 +89,7 @@
 
   .tablePage__confidence{
     margin-right: 24px;
+    color:#fff
   }
 
 
@@ -180,4 +182,14 @@
 
 .tablePage__icon_container {
   width: 80%
+}
+.downloadBTN.bx--btn--ghost.bx--btn--icon-only .bx--btn__icon path{
+  fill: #fff !important;
+}
+.bx--btn--ghost:hover{
+  background-color: #0e0d0d;
+}
+.downloadBTN.bx--btn{
+  height: 0rem !important;
+  min-height: 0rem !important;
 }

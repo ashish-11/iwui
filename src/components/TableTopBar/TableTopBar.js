@@ -961,7 +961,7 @@ export default class TableTopBar extends Component {
         return (
             <React.Fragment>
 
-                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_disable" : "tool_icon"}>
                     {(this.props.selectedCell.length === 0) ?
                         (<div>
                             <MergeCell />
@@ -970,85 +970,101 @@ export default class TableTopBar extends Component {
                             </div>
                         </div>)
                         :
-                        (<Tooltip
-                            placement="bottom"
-                            trigger="hover"
-                            overlayClassName="newtableOverlay"
-                            overlay={"Perform Merge operations like Merge Column/ Merge Row."}
-                        >
-                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                        (
+                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_disable" : "tool_icon"}>
                                 <OverflowMenu
                                     renderIcon={() =>
-                                    (<div className="tool_icon">
-                                        <MergeCell />
-                                        <div className="tool_text">
-                                            Merge Operations
-                                        </div>
-                                    </div>)
+                                    (
+                                        <Tooltip
+                                            placement="bottom"
+                                            trigger="hover"
+                                            overlayClassName="newtableOverlay"
+                                            overlay={"Perform Merge operations like Merge Column/ Merge Row."}
+                                        >
+                                            <div className="tool_icon">
+                                                <MergeCell />
+                                                <div className="tool_text">
+                                                    Merge Operations
+                                                </div>
+                                            </div>
+                                        </Tooltip>
+                                    )
                                     }
                                 >
                                     <OverflowMenuItem
                                         itemText={'Merge Cell'}
                                         onClick={this._mergeCells.bind(this)}
-                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow}
+                                    />
                                     <OverflowMenuItem
                                         itemText={'Merge Row'}
                                         onClick={this._mergeRows.bind(this)}
-                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow}
+                                    />
                                     <OverflowMenuItem
                                         itemText={'Merge Column'}
                                         onClick={this._mergeColumns.bind(this)}
-                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow}
+                                    />
                                 </OverflowMenu>
 
                             </div>
-                        </Tooltip>
                         )
                     }
                 </div>
 
                 <span className='divider' />
 
-                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+
+
+                <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 1 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_disable" : "tool_icon"}>
                     {(this.props.selectedCell.length === 0) ?
-                        (<div>
-                            <DeleteCell />
-                            <div className="tool_text">
-                                Delete Operations
-                            </div>
-                        </div>)
-                        :
-                        (<Tooltip
-                            placement="bottom"
-                            trigger="hover"
-                            overlayClassName="newtableOverlay"
-                            overlay={"Perform Merge operations like Merge Column/ Merge Row."}
-                        >
-                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_withmenu_disable" : "tool_icon_withmenu"}>
+                        (
+                            <div>
                                 <DeleteCell />
+                                <div className="tool_text">
+                                    Delete Operations
+                                </div>
+                            </div>
+                        )
+                        :
+                        (
+                            <div className={(this.props.overlayView !== 'table' || this.props.selectedCell.length < 1 || this.props.splitFlag || !isOverlayShow) ? "tool_icon_disable" : "tool_icon"}>
                                 <OverflowMenu
                                     renderIcon={() =>
-                                    (<div className="tool_icon">
-                                        <DeleteCell />
-                                        <div className="tool_text">
-                                            Delete Operations
-                                        </div>
-                                    </div>)
+                                    (
+                                        <Tooltip
+                                            placement="bottom"
+                                            trigger="hover"
+                                            overlayClassName="newtableOverlay"
+                                            overlay={"Perform Delete operations like Delete Column/ Delete Row."}
+                                        >
+                                            <div className="tool_icon">
+                                                <DeleteCell />
+                                                <div className="tool_text">
+                                                    Delete Operations
+                                                </div>
+                                            </div>
+                                        </Tooltip>
+                                    )
                                     }>
                                     <OverflowMenuItem
                                         itemText={'Delete Row'}
                                         onClick={this._deleteRows.bind(this)}
-                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 1 || this.props.splitFlag || !isOverlayShow}
+                                    />
                                     <OverflowMenuItem
                                         itemText={'Delete Column'}
                                         onClick={this._deleteColumns.bind(this)}
-                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow} />
+                                        disabled={this.props.overlayView !== 'table' || this.props.selectedCell.length < 1 || this.props.splitFlag || !isOverlayShow}
+                                    />
                                 </OverflowMenu>
 
                             </div>
-                        </Tooltip>)
+                        )
                     }
                 </div>
+
 
                 {/*<div className={this.props.overlayView !== 'table' || this.props.selectedCell.length < 2 || this.props.splitFlag || !isOverlayShow ? "tool_icon_disable" : "tool_icon"}
                     onClick={this._mergeCells.bind(this)}>
